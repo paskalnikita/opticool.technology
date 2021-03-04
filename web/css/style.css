@@ -1,0 +1,421 @@
+/* =============================================================================
+   HTML5 CSS Reset Minified - Eric Meyer
+   ========================================================================== */
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    scrollbar-width: none;
+}
+
+body {
+    line-height: 1;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+nav ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: none
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold
+}
+
+del {
+    text-decoration: line-through
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0
+}
+
+input,
+select {
+    vertical-align: middle
+}
+
+li {
+    list-style: none
+}
+
+
+/* =============================================================================
+   My CSS
+   ========================================================================== */
+
+
+/* ---- base ---- */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    font: normal 75% Arial, Helvetica, sans-serif;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+
+/* ---- stats.js ---- */
+
+.count-particles {
+    background: #0e1416;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+#stats,
+.count-particles {
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles {
+    border-radius: 0 0 3px 3px;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    background-color: #0e1416;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.particles-js-canvas-el {
+    position: absolute;
+    z-index: 1;
+}
+
+
+/* https://codepen.io/kirkland/pen/ZaWJMb */
+
+body {
+    background-color: #0e1416;
+}
+
+.grid {
+    width: 100%;
+    height: 100%;
+    /* change size for large-small screen sizes */
+    overflow: hidden;
+    perspective: 1420px;
+}
+
+.grid-fade {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background: radial-gradient(ellipse at 25% 55%, rgba(14, 20, 22, 0) 20%, rgba(14, 20, 22, 100) 90%);
+    /* background: radial-gradient(ellipse at 50% 50%, rgba(14, 20, 22, 0) 20%, rgba(14, 20, 22, 100) 80%); */
+}
+
+.grid-lines {
+    width: 200%;
+    height: 200%;
+    background-image: linear-gradient(to right, rgba(7, 203, 121, 0.7) 7px, transparent 0), linear-gradient(to bottom, rgba(7, 203, 121, 0.7) 7px, transparent 0);
+    background-size: 110px 80px;
+    background-repeat: repeat;
+    transform-origin: 100% 0 0;
+    animation: play 60s linear infinite;
+}
+
+.ExpandedSetPiece div:grid-lines {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+@keyframes play {
+    0% {
+        transform: rotateX(45deg) translateX(-50%);
+    }
+    100% {
+        transform: rotateX(45deg) translateY(0);
+    }
+}
+
+#container {
+    position: relative;
+}
+
+#navi,
+#infoi {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#infoi {
+    z-index: 10;
+}
+
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-top: -3px;
+    margin-right: -3px;
+}
+
+.gg-eye {
+    position: relative;
+    display: block;
+    transform: scale(1.4);
+    /* transform: scale(var(--ggs,1)); */
+    width: 24px;
+    height: 18px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    overflow: hidden;
+    box-sizing: border-box
+}
+
+.gg-eye::after,
+.gg-eye::before {
+    content: "";
+    display: block;
+    border-radius: 100px;
+    position: absolute;
+    box-sizing: border-box
+}
+
+.gg-eye::after {
+    top: 2px;
+    color: #0d6efd;
+    box-shadow: inset 0 -8px 0 2px, inset 0 0 0 2px;
+    width: 24px;
+    height: 24px;
+}
+
+.gg-eye::before {
+    width: 10px;
+    color: #0A8D57;
+    height: 10px;
+    border: 2px solid;
+    bottom: 3px;
+    left: 7px
+}
+
+#maincontainer {
+    width: 100%;
+    height: 100%;
+}
+
+#leftcolumn {
+    float: left;
+    display: inline-block;
+    width: 30px;
+}
+
+#contentwrapper {
+    /* font-family: Montserrat; */
+    display: inline-block;
+}
+
+.circle {
+    border: 7px solid #0A8D57;
+    border-radius: 50%;
+    padding: 50%;
+    margin-top: 35%;
+    text-align: center;
+}
+
+.square {
+    border: 7px solid #0D6EFD;
+    border-radius: 5px;
+    padding: 12.5%;
+}
+
+.square-big {
+    /* border: 7px solid #0D6EFD; */
+    border-radius: 5px;
+    padding: 12.5%;
+}
+
+.dot_square {
+    float: left;
+    border: 7px solid #0D6EFD;
+    border-radius: 5px;
+    /* padding: 12.5%; */
+    padding: 15px;
+    margin: 10px;
+}
+
+.order-btn {
+    border: 5px solid !important;
+    border-radius: 125px !important;
+}
