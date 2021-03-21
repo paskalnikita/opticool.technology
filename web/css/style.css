@@ -426,3 +426,51 @@ body {
     max-height: 390px;
     /* margin: auto; */
 }
+
+#target {
+    position: relative;
+    width: 400px;
+    height: 300px;
+}
+
+#target:before,
+#target:after,
+#target>:first-child:before,
+#target>:first-child:after {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: #0A8D57;
+    /* or whatever colour */
+    border-style: solid;
+    /* or whatever style */
+    content: '';
+}
+
+#target:before {
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    border-width: 10px 0 0 10px
+}
+
+#target:after {
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+    border-width: 10px 10px 0 0
+}
+
+#target>:first-child:before {
+    bottom: 0;
+    right: 0;
+    border-radius: 5px;
+    border-width: 0 10px 10px 0
+}
+
+#target>:first-child:after {
+    bottom: 0;
+    left: 0;
+    border-radius: 5px;
+    border-width: 0 0 10px 10px
+}
