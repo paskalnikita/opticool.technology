@@ -387,6 +387,8 @@ body {
 }
 
 .circle {
+    margin-top: 50%;
+    margin-bottom: 50%;
     border: 7px solid #0A8D57;
     border-radius: 50%;
     padding: 15%;
@@ -417,4 +419,10 @@ body {
 .order-btn {
     border: 5px solid !important;
     border-radius: 125px !important;
+}
+
+.device {
+    /* text-align: center; */
+    max-height: 390px;
+    /* margin: auto; */
 }
