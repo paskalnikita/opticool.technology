@@ -490,3 +490,7 @@ body {
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
+
+.no-dec {
+    text-decoration: none !important;
+}
