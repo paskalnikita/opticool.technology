@@ -17,6 +17,31 @@
 <body>
 
     <script>
+        document.body.addEventListener('touchstart', function() {
+                if (audiosWeWantToUnlock) {
+                    for (let audio of audiosWeWantToUnlock) {
+                        audio.play()
+                        audio.pause()
+                        audio.currentTime = 0
+                    }
+                    audiosWeWantToUnlock = null
+                }
+            }, false) //where earlier you did:
+        var audiosWeWantToUnlock = [];
+        audiosWeWantToUnlock.push(new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3'));
+        audiosWeWantToUnlock.push(new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3'));
+
+
+        var nothing = new Audio('http://touchbasicapp.com/nothing.wav');
+        window.onload = function() {
+            nothing.play().then(function() {
+                console.log('Audio started unlocked!');
+            }).catch(function() {
+                alert('Audio started locked')
+            })
+        }
+
+
         var audio = null;
 
         function play_audio() {
@@ -29,12 +54,11 @@
             audio.currentTime = 0;
             $('.collapse').hide();
         }
-
         setTimeout(function() {
             $('.collapse').collapse();
             play_audio();
             // stop_audio();
-        }, 1000);
+        }, 4000);
     </script>
     <style>
         .rounded {
@@ -69,6 +93,12 @@
         #infoi {
             z-index: 10;
         }
+        
+        .action-btn {
+            border: 0;
+            width: 44px !important;
+            height: 44px !important;
+        }
     </style>
 
     <div id="navi" class="card">
@@ -94,10 +124,10 @@
                     </div>
                     <div class="col-6"><span class="float-right">
     
-                            <button class="btn btn-sm btn-danger rounded mr-2" onclick="stop_audio()">
+                            <button class="action-btn bg-danger text-white rounded mr-2" onclick="stop_audio()">
                                 <i class="fa fa-phone rotate-bottom" aria-hidden="true"></i>
                             </button>
-                        <button class="btn btn-sm btn-success rounded ml-1">
+                        <button class="action-btn bg-success text-white rounded ml-1">
                                 <i class="fa fa-phone fa-flip-horizontal" aria-hidden="true"></i>
                             </button>
                         </span></div>
@@ -106,7 +136,61 @@
         </div>
     </div>
 
+    <div id=lockeddiv style='font-style:italic'></div>
+    <div id=messagediv style='font-style:italic'>Tap for music.</div>
+    <script>
+        var music = new Audio("http: //curtastic.com/nightmare.mp3");
+        var chime = new Audio("http: //curtastic.com/gold.wav");
+        var nothing = new Audio("http: //touchbasicapp.com/nothing.wav");
+        var allAudio = [];
+        allAudio.push(music);
+        allAudio.push(chime)
 
-</body>
+        var tapped = function() {
+            messagediv.innerHTML = "tapped"
+                // Play all audio files on the first tap and stop them immediately.
+            if (allAudio) {
+                for (var audio of allAudio) {
+                    audio.play()
+                    audio.pause()
+                    audio.currentTime = 0
+                }
+                allAudio = null
+            }
+            // We should be able to play music delayed now (even when it’s not during the tap event).
+            messagediv.innerHTML = "Music starts in 2 seconds…"
+            setTimeout(function() {
+                messagediv.innerHTML = "Music playing. < button onclick = 'stop()' > Stop < /button>";
+                music.play()
+            }, 2000)
+
+        }
+        document.body.addEventListener('touchstart', tapped, false) document.body.addEventListener('click', tapped, false)
+
+        var stop = function() {
+            music.pause()
+            loop = null
+            document.body.removeEventListener('touchstart', tapped, false)
+            document.body.removeEventListener('click', tapped, false)
+        }
+
+        // Check if audio starts already unlocked by playing a blank wav.
+        nothing.play().then(function() {
+            lockeddiv.innerHTML = "Audio started unlocked!";
+        }).catch(function() {
+            lockeddiv.innerHTML = "Audio started locked: "
+        })
+
+        var loop = function() {
+            // Try to play chimes whenever we want (not during user action).
+            if (Math.random() < .01) {
+                chime.play().then(function() {
+                    lockeddiv.innerHTML = "Audio is now unlocked!";
+                })
+            }
+            setTimeout(loop, 16)
+        }
+        loop()
+    </script>
 
 </html>
