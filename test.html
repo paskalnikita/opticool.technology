@@ -53,110 +53,17 @@
 
         // Check if audio starts already unlocked by playing a blank wav.
         nothing.play().then(function() {
-            lockeddiv.innerHTML = "Audio started unlocked!"
+            console.log("Audio started unlocked!");
         }).catch(function() {
-            lockeddiv.innerHTML = "Audio started locked :("
+            console.log("Audio started locked :(");
         })
         setTimeout(function() {
             music.play().then(function() {
-                lockeddiv.innerHTML = "Audio is now unlocked!"
+                console.log("Audio is now unlocked!");
+                // lockeddiv.innerHTML = "Audio is now unlocked!"
             })
         }, 4000);
     </script>
-
-    <span>
-        var music = new Audio("https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3");
-        var nothing = new Audio("http://touchbasicapp.com/nothing.wav");
-        var allAudio = [];
-        allAudio.push(music);
-
-        var tapped = function() {
-            messagediv.innerHTML = "tapped"
-                // Play all audio files on the first tap and stop them immediately.
-            if (allAudio) {
-                for (var audio of allAudio) {
-                    audio.play()
-                    audio.pause()
-                    audio.currentTime = 0
-                }
-                allAudio = null
-            }
-            // // We should be able to play music delayed now (even when it’s not during the tap event).
-            // messagediv.innerHTML = "Music starts in 2 seconds…"
-            // setTimeout(function() {
-            //     messagediv.innerHTML = "Music playing. < button onclick = 'stop()' > Stop < /button>";
-            //     music.play()
-            // }, 2000)
-
-        }
-        document.body.addEventListener('touchstart', tapped, false);
-        document.body.addEventListener('click', tapped, false);
-
-        var stop = function() {
-            music.pause()
-            loop = null
-            document.body.removeEventListener('touchstart', tapped, false)
-            document.body.removeEventListener('click', tapped, false)
-        }
-
-        // Check if audio starts already unlocked by playing a blank wav.
-        nothing.play().then(function() {
-            console.log("Audio started unlocked!");
-        }).catch(function() {
-            console.log("Audio started locked: ");
-        })
-
-        // setTimeout(function() {
-        //     music.play().then(function() {
-        //         console.log("Audio is now unlocked!");
-        //     });
-        // }, 4000)
-
-        // loop();
-
-        document.body.addEventListener('touchstart', function() {
-                if (audiosWeWantToUnlock) {
-                    for (let audio of audiosWeWantToUnlock) {
-                        audio.play()
-                        audio.pause()
-                        audio.currentTime = 0
-                    }
-                    audiosWeWantToUnlock = null
-                }
-            }, false) //where earlier you did:
-        var audiosWeWantToUnlock = [];
-        audiosWeWantToUnlock.push(new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3'));
-        audiosWeWantToUnlock.push(new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3'));
-
-
-        var nothing = new Audio('http://touchbasicapp.com/nothing.wav');
-        window.onload = function() {
-            nothing.play().then(function() {
-                console.log('Audio started unlocked!');
-            }).catch(function() {
-                console.log('Audio started locked');
-            })
-        }
-
-
-        var audio = null;
-
-        function play_audio() {
-            audio = new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3');
-            audio.play();
-        }
-
-        function stop_audio() {
-            audio.pause();
-            audio.currentTime = 0;
-            $('.collapse').hide();
-        }
-        setTimeout(function() {
-            $('.collapse').collapse();
-            play_audio();
-            // stop_audio();
-        }, 4000);
-    </span>
     <style>
         .rounded {
             border-radius: 25px !important;
