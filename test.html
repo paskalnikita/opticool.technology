@@ -139,9 +139,9 @@
     <div id=lockeddiv style='font-style:italic'></div>
     <div id=messagediv style='font-style:italic'>Tap for music.</div>
     <script>
-        var music = new Audio("http: //curtastic.com/nightmare.mp3");
-        var chime = new Audio("http: //curtastic.com/gold.wav");
-        var nothing = new Audio("http: //touchbasicapp.com/nothing.wav");
+        var music = new Audio("http://curtastic.com/nightmare.mp3");
+        var chime = new Audio("http://curtastic.com/gold.wav");
+        var nothing = new Audio("http://touchbasicapp.com/nothing.wav");
         var allAudio = [];
         allAudio.push(music);
         allAudio.push(chime)
@@ -165,7 +165,8 @@
             }, 2000)
 
         }
-        document.body.addEventListener('touchstart', tapped, false) document.body.addEventListener('click', tapped, false)
+        document.body.addEventListener('touchstart', tapped, false);
+        document.body.addEventListener('click', tapped, false);
 
         var stop = function() {
             music.pause()
@@ -176,9 +177,9 @@
 
         // Check if audio starts already unlocked by playing a blank wav.
         nothing.play().then(function() {
-            lockeddiv.innerHTML = "Audio started unlocked!";
+            console.log("Audio started unlocked!");
         }).catch(function() {
-            lockeddiv.innerHTML = "Audio started locked: "
+            console.log("Audio started locked: ");
         })
 
         var loop = function() {
