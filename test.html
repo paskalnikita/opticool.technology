@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call</title>
+
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <script>
+        var audio = null;
+
+        function play_audio() {
+            audio = new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3');
+            audio.play();
+        }
+
+        function stop_audio() {
+            audio.pause();
+            audio.currentTime = 0;
+            $('.collapse').hide();
+        }
+
+        setTimeout(function() {
+            $('.collapse').collapse();
+            play_audio();
+            // stop_audio();
+        }, 1000);
+    </script>
+    <style>
+        .rounded {
+            border-radius: 25px !important;
+        }
+        
+        .rotate-bottom {
+            transform: rotate(225deg);
+        }
+        
+        .left {
+            float: left !important;
+        }
+        
+        .right {
+            float: right !important;
+        }
+        
+        .bg {
+            background-color: rgba(52, 58, 64, 0.95)!important;
+        }
+        
+        #navi,
+        #infoi {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        #infoi {
+            z-index: 10;
+        }
+    </style>
+
+    <div id="navi" class="card">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis in aperiam voluptate tempore repellendus exercitationem iure officiis consequatur excepturi. Nesciunt, totam expedita architecto aperiam possimus pariatur rem aut praesentium quis! Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Impedit sint nulla cum itaque animi ex, modi hic quidem fugiat adipisci autem deleniti quas accusantium assumenda, iusto mollitia, sed qui cupiditate! Lorem ipsum, dolor sit amet consectetur adipisicing
+        elit. Mollitia dolor quibusdam dolorem ipsum alias fugit facilis iure nemo hic neque, nesciunt accusamus quidem adipisci laborum exercitationem sunt modi sequi voluptatem.
+    </div>
+    <div id="infoi">
+        <div class="collapse rounded" id="collapseExample">
+            <div class="row ml-1 mr-1 mt-1 card card-body rounded bg call">
+                <div class="row">
+                    <div class="col-6">
+                        <span class="text-white mr-5">
+                                <b>
+                                    +48 123 456 789
+                                </b>
+                                </span>
+                        <br>
+                        <!-- <span class="h4">
+                                    Page.com
+                                </span> -->
+
+                    </div>
+                    <div class="col-6"><span class="float-right">
+    
+                            <button class="btn btn-sm btn-danger rounded mr-2" onclick="stop_audio()">
+                                <i class="fa fa-phone rotate-bottom" aria-hidden="true"></i>
+                            </button>
+                        <button class="btn btn-sm btn-success rounded ml-1">
+                                <i class="fa fa-phone fa-flip-horizontal" aria-hidden="true"></i>
+                            </button>
+                        </span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
