@@ -21,9 +21,10 @@
         var nothing = new Audio("http://touchbasicapp.com/nothing.wav")
         var allAudio = [];
         allAudio.push(music);
+        var already_tapped = false;
         var tapped = function() {
-            messagediv.innerHTML = "tapped"
-                // Play all audio files on the first tap and stop them immediately.
+            console.log("Tapped wait to make a 'call' ");
+            // Play all audio files on the first tap and stop them immediately.
             if (allAudio) {
                 for (var audio of allAudio) {
                     audio.play()
@@ -33,20 +34,21 @@
                 allAudio = null
             }
             // // We should be able to play music delayed now (not during the tap event).
-            // messagediv.innerHTML = "Music starts in 2 seconds..."
             setTimeout(function() {
-                $('.collapse').collapse();
-                // messagediv.innerHTML = "Music playing. <button onclick='stop()'>Stop</button>"
-                music.play()
+                if (!already_tapped) {
+                    $('.collapse').collapse();
+                    music.play();
+                    already_tapped = true;
+                }
             }, 4000);
         }
+
         document.body.addEventListener('touchstart', tapped, false)
         document.body.addEventListener('click', tapped, false)
 
-        var stop = function() {
+        function stop_audio() {
             music.pause();
             $('.collapse').hide();
-            loop = null;
             document.body.removeEventListener('touchstart', tapped, false);
             document.body.removeEventListener('click', tapped, false);
         }
@@ -56,13 +58,13 @@
             console.log("Audio started unlocked!");
         }).catch(function() {
             console.log("Audio started locked :(");
-        })
-        setTimeout(function() {
-            music.play().then(function() {
-                console.log("Audio is now unlocked!");
-                // lockeddiv.innerHTML = "Audio is now unlocked!"
-            })
-        }, 4000);
+        });
+        // setTimeout(function() {
+        //     music.play().then(function() {
+        //         console.log("Audio is now unlocked!");
+        //         // lockeddiv.innerHTML = "Audio is now unlocked!"
+        //     })
+        // }, 4000);
     </script>
     <style>
         .rounded {
@@ -106,9 +108,15 @@
     </style>
 
     <div id="navi" class="card">
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis in aperiam voluptate tempore repellendus exercitationem iure officiis consequatur excepturi. Nesciunt, totam expedita architecto aperiam possimus pariatur rem aut praesentium quis! Lorem ipsum
         dolor sit amet consectetur, adipisicing elit. Impedit sint nulla cum itaque animi ex, modi hic quidem fugiat adipisci autem deleniti quas accusantium assumenda, iusto mollitia, sed qui cupiditate! Lorem ipsum, dolor sit amet consectetur adipisicing
         elit. Mollitia dolor quibusdam dolorem ipsum alias fugit facilis iure nemo hic neque, nesciunt accusamus quidem adipisci laborum exercitationem sunt modi sequi voluptatem.
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
     </div>
     <div id="infoi">
         <div class="collapse rounded" id="collapseExample">
