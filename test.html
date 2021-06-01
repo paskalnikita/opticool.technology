@@ -69,7 +69,7 @@
     </script>
     <style>
         .rounded {
-            border-radius: 25px !important;
+            border-radius: 22px !important;
         }
         
         .rotate-bottom {
@@ -99,12 +99,21 @@
         
         #infoi {
             z-index: 10;
+            position: fixed !important;
         }
         
         .action-btn {
             border: 0;
             width: 44px !important;
             height: 44px !important;
+        }
+        
+        .no-padding {
+            padding: 0 !important;
+        }
+        
+        .resize {
+            max-height: 108px !important;
         }
     </style>
 
@@ -118,12 +127,30 @@
         <h4 class="text-center">
             <i class="fas fa-arrow-down"></i>
         </h4>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis in aperiam voluptate tempore repellendus exercitationem iure officiis consequatur excepturi. Nesciunt, totam expedita architecto aperiam possimus pariatur rem aut praesentium quis! Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Impedit sint nulla cum itaque animi ex, modi hic quidem fugiat adipisci autem deleniti quas accusantium assumenda, iusto mollitia, sed qui cupiditate! Lorem ipsum, dolor sit amet consectetur adipisicing
+        elit. Mollitia dolor quibusdam dolorem ipsum alias fugit facilis iure nemo hic neque, nesciunt accusamus quidem adipisci laborum exercitationem sunt modi sequi voluptatem.
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis in aperiam voluptate tempore repellendus exercitationem iure officiis consequatur excepturi. Nesciunt, totam expedita architecto aperiam possimus pariatur rem aut praesentium quis! Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Impedit sint nulla cum itaque animi ex, modi hic quidem fugiat adipisci autem deleniti quas accusantium assumenda, iusto mollitia, sed qui cupiditate! Lorem ipsum, dolor sit amet consectetur adipisicing
+        elit. Mollitia dolor quibusdam dolorem ipsum alias fugit facilis iure nemo hic neque, nesciunt accusamus quidem adipisci laborum exercitationem sunt modi sequi voluptatem.
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis in aperiam voluptate tempore repellendus exercitationem iure officiis consequatur excepturi. Nesciunt, totam expedita architecto aperiam possimus pariatur rem aut praesentium quis! Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Impedit sint nulla cum itaque animi ex, modi hic quidem fugiat adipisci autem deleniti quas accusantium assumenda, iusto mollitia, sed qui cupiditate! Lorem ipsum, dolor sit amet consectetur adipisicing
+        elit. Mollitia dolor quibusdam dolorem ipsum alias fugit facilis iure nemo hic neque, nesciunt accusamus quidem adipisci laborum exercitationem sunt modi sequi voluptatem.
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
     </div>
     <div id="infoi">
         <div class="collapse rounded" id="collapseExample">
-            <div class="row ml-1 mr-1 mt-1 card card-body rounded bg call">
+            <div class="row ml-1 mt-1 mr-1 card card-body rounded bg call resize">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-7 no-padding">
                         <span class="text-white">
                                 <b class="h5 mt-5">
                                     +48 123456789
@@ -135,7 +162,7 @@
                                 </span> -->
 
                     </div>
-                    <div class="col-6"><span class="float-right">
+                    <div class="col-5 no-padding"><span class="float-right">
     
                             <button class="action-btn bg-danger text-white rounded mr-2" onclick="stop_audio()">
                                 <i class="fa fa-phone rotate-bottom" aria-hidden="true"></i>
