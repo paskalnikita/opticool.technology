@@ -55,13 +55,14 @@
         }
 
         
-        take_call(){
+        function take_call() {
             music.pause();
             $('.collapse').hide();
             document.body.removeEventListener('touchstart', tapped, false);
             document.body.removeEventListener('click', tapped, false);
-            alert ("YOU ARE NOOB!")
+            alert ("YOU ARE NOOB!");
         }
+
         // Check if audio starts already unlocked by playing a blank wav.
         nothing.play().then(function() {
             console.log("Audio started unlocked!");
