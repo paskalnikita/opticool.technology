@@ -19,22 +19,26 @@
 
     <script>
         var music = new Audio("https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3")
-        var nothing = new Audio("http://touchbasicapp.com/nothing.wav")
+        var nothing = new Audio("http://touchbasicapp.com/nothing.wav");
+        var message = new Audio();
         var allAudio = [];
-        allAudio.push(music);
+        allAudio.push(nothing);
+
         var already_tapped = false;
         var tapped = function() {
-            console.log("Tapped wait to make a 'call' ");
+            console.log("Tapped");
             // Play all audio files on the first tap and stop them immediately.
             if (allAudio) {
                 for (var audio of allAudio) {
-                    audio.play()
-                    audio.pause()
-                    audio.currentTime = 0
+                    audio.play().catch((e) => {
+                        console.log(e)
+                    });
+                    audio.pause();
+                    audio.currentTime = 0;
                 }
-                allAudio = null
+                allAudio = null;
             }
-            // // We should be able to play music delayed now (not during the tap event).
+            // We should be able to play music delayed now (not during the tap event).
             setTimeout(function() {
                 if (!already_tapped) {
                     $('.collapse').collapse();
@@ -42,8 +46,9 @@
                     already_tapped = true;
                     window.navigator.vibrate(200); // vibrate for 200ms
                     window.navigator.vibrate([100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100]); // Vibrate 'SOS' in Morse.
+                    // message.play();
                 }
-            }, 200);
+            }, 3000);
         }
 
         document.body.addEventListener('touchstart', tapped, false)
@@ -62,9 +67,11 @@
             $('.collapse').hide();
             document.body.removeEventListener('touchstart', tapped, false);
             document.body.removeEventListener('click', tapped, false);
-            alert("YOU ARE NOOB!");
-        }
+            document.getElementById("for_action").innerHTML = "click me.";
+            document.getElementById("qr").style.zIndex = "100";
+            document.getElementById("message").style.zIndex = "1";
 
+        }
         // Check if audio starts already unlocked by playing a blank wav.
         nothing.play().then(function() {
             console.log("Audio started unlocked!");
@@ -93,18 +100,32 @@
             background-color: rgba(52, 58, 64, 0.95)!important;
         }
         
-        #navi,
-        #infoi {
+        #content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+        
+        #message {
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0;
             left: 0;
+            /* background-color: red; */
+            z-index: 6;
+            position: fixed !important;
         }
         
-        #infoi {
+        #qr {
+            z-index: 5;
+        }
+        
+        .notification {
             z-index: 10;
-            position: fixed !important;
         }
         
         .action-btn {
@@ -127,10 +148,7 @@
         }
     </style>
 
-    <div id="navi" class="card">
-        <h4 class="text-center">
-            <i class="fas fa-arrow-down"></i>
-        </h4>
+    <div id="content">
         <h1 class="text-center">
             Scroll
         </h1>
@@ -153,28 +171,45 @@
         <h1 class="text-center">
             very
         </h1>
-
         <h4 class="text-center">
             <i class="fas fa-arrow-down"></i>
         </h4>
         <h1 class="text-center">
-            bottom
+            bottom.
         </h1>
-        <div class="row card card-body text-center justify-content-center">
-            <div class="col-md-8 offset-md-2">
-                <svg xmlns="http://www.w3.org/2000/svg" height="328" width="328" class="pyqrcode"><path transform="scale(8)" stroke="#000" class="pyqrline" d="M4 4.5h7m4 0h1m2 0h1m2 0h2m3 0h1m1 0h1m1 0h7m-33 1h1m5 0h1m2 0h1m2 0h1m1 0h5m1 0h3m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m1 0h4m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m2 0h6m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h3m1 0h1m2 0h1m1 0h2m3 0h2m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m3 0h2m1 0h1m1 0h1m-16 1h2m1 0h2m1 0h2m3 0h2m2 0h2m4 0h1m4 0h2m-31 1h1m1 0h2m3 0h1m1 0h3m1 0h4m2 0h1m1 0h3m1 0h1m1 0h5m-30 1h2m1 0h3m4 0h1m1 0h2m4 0h1m1 0h2m3 0h1m1 0h4m-32 1h2m1 0h2m6 0h2m2 0h2m3 0h2m2 0h1m1 0h2m1 0h3m-33 1h4m1 0h5m2 0h3m3 0h1m2 0h1m2 0h1m1 0h2m1 0h1m-27 1h1m5 0h1m2 0h4m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h1m2 0h2m1 0h1m3 0h1m1 0h5m2 0h1m5 0h6m-31 1h1m4 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h3m2 0h1m2 0h3m1 0h1m1 0h1m-32 1h2m2 0h2m4 0h1m5 0h1m1 0h1m5 0h5m2 0h1m-33 1h2m2 0h1m2 0h1m5 0h1m2 0h1m4 0h2m1 0h1m1 0h4m1 0h2m-33 1h3m1 0h1m1 0h3m1 0h5m2 0h5m1 0h1m2 0h1m2 0h2m1 0h1m-29 1h1m2 0h1m1 0h2m1 0h2m1 0h1m4 0h1m2 0h2m1 0h1m2 0h2m-31 1h1m5 0h1m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m4 0h1m1 0h1m-30 1h1m2 0h1m1 0h1m2 0h1m1 0h3m1 0h3m2 0h5m1 0h1m1 0h2m1 0h2m-32 1h1m2 0h2m1 0h1m1 0h1m1 0h2m4 0h1m2 0h2m1 0h2m2 0h2m1 0h4m-33 1h1m2 0h2m2 0h2m2 0h1m2 0h1m1 0h2m6 0h1m2 0h2m1 0h1m1 0h1m-33 1h5m1 0h1m1 0h2m4 0h1m1 0h1m6 0h6m-21 1h2m1 0h1m2 0h1m3 0h3m3 0h1m3 0h4m-32 1h7m1 0h2m2 0h1m5 0h2m1 0h4m1 0h1m1 0h3m-31 1h1m5 0h1m2 0h1m1 0h2m2 0h1m1 0h2m4 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h3m2 0h1m1 0h7m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h5m3 0h1m3 0h1m2 0h1m1 0h1m1 0h1m4 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m6 0h2m2 0h2m6 0h1m2 0h2m-33 1h1m5 0h1m2 0h1m1 0h7m1 0h2m1 0h1m2 0h2m2 0h4m-33 1h7m2 0h1m7 0h1m3 0h4m1 0h1m1 0h2"/></svg>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            This
+        </h1>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            is
+        </h1>
+        <div class="row text-center justify-content-center">
+            <div class="text-center justify-content-center">
+                <button id="qr" class="card" onclick="pay()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="328" width="328" class="pyqrcode"><path transform="scale(8)" stroke="#000" class="pyqrline" d="M4 4.5h7m4 0h1m2 0h1m2 0h2m3 0h1m1 0h1m1 0h7m-33 1h1m5 0h1m2 0h1m2 0h1m1 0h5m1 0h3m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m1 0h4m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m2 0h6m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h3m1 0h1m2 0h1m1 0h2m3 0h2m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m3 0h2m1 0h1m1 0h1m-16 1h2m1 0h2m1 0h2m3 0h2m2 0h2m4 0h1m4 0h2m-31 1h1m1 0h2m3 0h1m1 0h3m1 0h4m2 0h1m1 0h3m1 0h1m1 0h5m-30 1h2m1 0h3m4 0h1m1 0h2m4 0h1m1 0h2m3 0h1m1 0h4m-32 1h2m1 0h2m6 0h2m2 0h2m3 0h2m2 0h1m1 0h2m1 0h3m-33 1h4m1 0h5m2 0h3m3 0h1m2 0h1m2 0h1m1 0h2m1 0h1m-27 1h1m5 0h1m2 0h4m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h1m2 0h2m1 0h1m3 0h1m1 0h5m2 0h1m5 0h6m-31 1h1m4 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h3m2 0h1m2 0h3m1 0h1m1 0h1m-32 1h2m2 0h2m4 0h1m5 0h1m1 0h1m5 0h5m2 0h1m-33 1h2m2 0h1m2 0h1m5 0h1m2 0h1m4 0h2m1 0h1m1 0h4m1 0h2m-33 1h3m1 0h1m1 0h3m1 0h5m2 0h5m1 0h1m2 0h1m2 0h2m1 0h1m-29 1h1m2 0h1m1 0h2m1 0h2m1 0h1m4 0h1m2 0h2m1 0h1m2 0h2m-31 1h1m5 0h1m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m4 0h1m1 0h1m-30 1h1m2 0h1m1 0h1m2 0h1m1 0h3m1 0h3m2 0h5m1 0h1m1 0h2m1 0h2m-32 1h1m2 0h2m1 0h1m1 0h1m1 0h2m4 0h1m2 0h2m1 0h2m2 0h2m1 0h4m-33 1h1m2 0h2m2 0h2m2 0h1m2 0h1m1 0h2m6 0h1m2 0h2m1 0h1m1 0h1m-33 1h5m1 0h1m1 0h2m4 0h1m1 0h1m6 0h6m-21 1h2m1 0h1m2 0h1m3 0h3m3 0h1m3 0h4m-32 1h7m1 0h2m2 0h1m5 0h2m1 0h4m1 0h1m1 0h3m-31 1h1m5 0h1m2 0h1m1 0h2m2 0h1m1 0h2m4 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h3m2 0h1m1 0h7m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h5m3 0h1m3 0h1m2 0h1m1 0h1m1 0h1m4 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m6 0h2m2 0h2m6 0h1m2 0h2m-33 1h1m5 0h1m2 0h1m1 0h7m1 0h2m1 0h1m2 0h2m2 0h4m-33 1h7m2 0h1m7 0h1m3 0h4m1 0h1m1 0h2"/></svg>
+                    </button>
             </div>
         </div>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-up"></i>
+        </h4>
+        <h1 class="text-center" id="for_action">
+            your product.
+        </h1>
     </div>
-    <div id="infoi">
-        <div class="collapse rounded" id="collapseExample">
+    <div id="message">
+        <div class="collapse rounded notification" id="collapseExample">
             <div class="row ml-1 mt-1 mr-1 card card-body rounded bg call resize">
                 <div class="row">
                     <div class="col-7 no-padding mt-2">
                         <span class="text-white">
-                        
                                 <b class="h5" id="phone">
-                                   
                                 </b>
                                 </span>
                         <br>
@@ -193,7 +228,6 @@
 
                     </div>
                     <div class="col-5 no-padding"><span class="float-right">
-    
                             <button class="action-btn bg-danger text-white text-center rounded mr-2" onclick="stop_audio()">
                                 <i class="fa fa-phone rotate-bottom text-center icon-size mr-1" aria-hidden="true"></i>
                             </button>
@@ -206,7 +240,11 @@
         </div>
     </div>
 
-    <div id=lockeddiv style='font-style:italic'></div>
-    <div id=messagediv style='font-style:italic'>Tap for music.</div>
+    <script>
+        function pay() {
+            console.log("Pay");
+            confirm("Pay");
+        }
+    </script>
 
 </html>
