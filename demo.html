@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Demo</title>
+
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <script>
+        var music = new Audio("https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3")
+        var nothing = new Audio("http://touchbasicapp.com/nothing.wav");
+        var message = new Audio("./product_id.mp3");
+        var allAudio = [];
+        allAudio.push(music);
+        allAudio.push(nothing);
+        allAudio.push(message);
+
+        var already_tapped = false;
+        var tapped = function() {
+            console.log("Tapped");
+            // Play all audio files on the first tap and stop them immediately.
+            if (allAudio) {
+                for (var audio of allAudio) {
+                    audio.play();
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+                allAudio = null;
+            }
+            // We should be able to play music delayed now (not during the tap event).
+            setTimeout(function() {
+                if (!already_tapped) {
+                    $('.collapse').collapse();
+                    music.play();
+                    already_tapped = true;
+                    window.navigator.vibrate(400); // vibrate for 200ms
+                    window.navigator.vibrate([100, 30, 100, 30, 100, 30, 100, 30, 200, 30, 100, 30, 100, 30, 100, 30, 100, 30, 200, 30, 100, 30, 100, 30, 100, 30, 100, 30, 200, 30, 100, 30, 100, 30, 100, 30, 100, 30, 200, 30]); // 4444
+                }
+            }, 2400);
+        }
+
+        document.body.addEventListener('touchstart', tapped, false)
+        document.body.addEventListener('click', tapped, false)
+
+        function stop_audio() {
+            music.pause();
+            $('.collapse').hide();
+            document.body.removeEventListener('touchstart', tapped, false);
+            document.body.removeEventListener('click', tapped, false);
+        }
+
+
+        function take_call() {
+            music.pause();
+            $('.collapse').hide();
+            message.play();
+            document.body.removeEventListener('touchstart', tapped, false);
+            document.body.removeEventListener('click', tapped, false);
+            document.getElementById("for_action").innerHTML = "click me.";
+            document.getElementById("arrows-down").innerHTML = "";
+            document.getElementById("qr").style.zIndex = "100";
+            document.getElementById("message").style.zIndex = "1";
+
+        }
+        // Check if audio starts already unlocked by playing a blank wav.
+        nothing.play().then(function() {
+            console.log("Audio started unlocked!");
+        }).catch(function() {
+            console.log("Audio started locked :(");
+        });
+    </script>
+    <style>
+        .rounded {
+            border-radius: 22px !important;
+        }
+        
+        .rotate-bottom {
+            transform: rotate(225deg);
+        }
+        
+        .left {
+            float: left !important;
+        }
+        
+        .right {
+            float: right !important;
+        }
+        
+        .bg {
+            background-color: rgba(52, 58, 64, 0.95)!important;
+        }
+        
+        #content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+        
+        #message {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 6;
+            position: fixed !important;
+        }
+        
+        #qr {
+            z-index: 5;
+        }
+        
+        .notification {
+            z-index: 10;
+        }
+        
+        .action-btn {
+            border: 0;
+            width: 44px !important;
+            height: 44px !important;
+        }
+        
+        .no-padding {
+            padding: 0 !important;
+        }
+        
+        .resize {
+            max-height: 98px !important;
+        }
+        
+        .text-under {
+            margin-top: -10px !important;
+            /* position: absolute; */
+        }
+    </style>
+
+    <div id="content">
+        <span id="arrows-down">
+          <h1 class="text-center">
+            Scroll
+        </h1>
+
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            to
+        </h1>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            the
+        </h1>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            bottom.
+        </h1>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            This
+        </h1>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
+        <h1 class="text-center">
+            is
+        </h1>
+        </span>
+        <div class="row text-center justify-content-center">
+            <button id="qr" class="card" onclick="pay()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="328" width="328" class="pyqrcode"><path transform="scale(8)" stroke="#000" class="pyqrline" d="M4 4.5h7m4 0h1m2 0h1m2 0h2m3 0h1m1 0h1m1 0h7m-33 1h1m5 0h1m2 0h1m2 0h1m1 0h5m1 0h3m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m2 0h5m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m2 0h1m1 0h4m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h1m2 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m3 0h2m1 0h1m1 0h1m4 0h1m-21 1h2m1 0h2m1 0h2m3 0h2m2 0h1m4 0h2m4 0h2m-31 1h1m1 0h2m3 0h1m1 0h3m2 0h4m1 0h1m1 0h3m1 0h1m1 0h5m-30 1h2m1 0h3m1 0h2m1 0h1m1 0h2m4 0h1m1 0h2m3 0h1m1 0h4m-32 1h2m1 0h2m6 0h3m1 0h1m4 0h2m2 0h1m1 0h2m1 0h3m-33 1h4m1 0h3m2 0h1m1 0h1m1 0h1m6 0h1m2 0h1m1 0h2m1 0h1m-27 1h1m3 0h4m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h5m2 0h1m5 0h6m-31 1h1m2 0h1m1 0h1m3 0h1m3 0h1m2 0h1m1 0h3m2 0h1m2 0h3m1 0h1m1 0h1m-32 1h1m3 0h2m4 0h1m5 0h1m1 0h1m5 0h5m2 0h1m-33 1h2m5 0h1m5 0h1m2 0h1m4 0h2m1 0h1m1 0h4m1 0h2m-31 1h1m3 0h3m1 0h5m2 0h5m1 0h1m2 0h1m2 0h2m1 0h1m-32 1h1m2 0h1m2 0h1m1 0h2m1 0h2m1 0h1m4 0h1m2 0h2m1 0h1m2 0h2m-31 1h1m3 0h3m3 0h1m3 0h1m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h1m-30 1h1m2 0h1m1 0h1m2 0h1m1 0h1m3 0h2m3 0h5m3 0h2m1 0h2m-32 1h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2m2 0h2m1 0h4m-33 1h1m2 0h2m2 0h2m2 0h1m2 0h1m2 0h1m1 0h2m2 0h1m3 0h2m1 0h1m1 0h1m-33 1h5m1 0h1m1 0h2m4 0h3m2 0h1m4 0h5m-21 1h2m1 0h1m1 0h2m3 0h3m3 0h1m3 0h4m-32 1h7m1 0h1m1 0h1m1 0h1m6 0h1m1 0h4m1 0h1m1 0h3m-31 1h1m5 0h1m4 0h2m2 0h1m1 0h1m5 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h2m1 0h1m4 0h1m4 0h1m1 0h7m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h5m3 0h1m3 0h1m2 0h1m1 0h1m1 0h1m4 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m6 0h2m2 0h2m6 0h1m2 0h2m-33 1h1m5 0h1m2 0h1m1 0h7m1 0h2m1 0h1m2 0h2m2 0h4m-33 1h7m2 0h1m7 0h1m3 0h4m1 0h1m1 0h1"/></svg>
+                    </button>
+        </div>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-up"></i>
+        </h4>
+        <h1 class="text-center" id="for_action">
+            your product.
+        </h1>
+    </div>
+
+    <div id="message">
+        <div class="collapse rounded notification" id="collapseExample">
+            <div class="row ml-1 mt-1 mr-1 card card-body rounded bg call resize">
+                <div class="row">
+                    <div class="col-7 no-padding mt-2">
+                        <span class="text-white">
+                                <b class="h5" id="phone">
+                                </b>
+                                </span>
+                        <br>
+                        <script>
+                            var number = Math.random().toString().slice(2, 5);
+                            var number_2 = Math.random().toString().slice(2, 5);
+                            var number_3 = Math.random().toString().slice(2, 5);
+                            var phone = "+48" + "&thinsp;" + number + "&thinsp;" + number_2 + "&thinsp;" + number_3;
+                            document.getElementById("phone").innerHTML = phone;
+                        </script>
+                        <span class="text-muted ml-2 text-under">
+                            <small>
+                                opticool.technology
+                            </small>
+                        </span>
+
+                    </div>
+                    <div class="col-5 no-padding"><span class="float-right">
+                            <button class="action-btn bg-danger text-white text-center rounded mr-2" onclick="stop_audio()">
+                                <i class="fa fa-phone rotate-bottom text-center icon-size mr-1" aria-hidden="true"></i>
+                            </button>
+                        <button class="action-btn bg-success text-white text-center rounded mr-2" onclick="take_call()">
+                                <i class="fa fa-phone fa-flip-horizontal text-center icon-size mr-1" aria-hidden="true"></i>
+                            </button>
+                        </span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function pay() {
+            console.log("Pay");
+            confirm("Pay");
+        }
+    </script>
+
+</html>
