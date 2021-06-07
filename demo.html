@@ -67,7 +67,7 @@
             message.play();
             document.body.removeEventListener('touchstart', tapped, false);
             document.body.removeEventListener('click', tapped, false);
-            document.getElementById("for_action").innerHTML = "click me.";
+            document.getElementById("for_action").innerHTML = "click to buy";
             document.getElementById("arrows-down").innerHTML = "";
             document.getElementById("qr").style.zIndex = "100";
             document.getElementById("message").style.zIndex = "1";
@@ -146,49 +146,62 @@
             margin-top: -10px !important;
             /* position: absolute; */
         }
+        .product-call{
+            margin-top: -17px !important;
+        }
+        .product-phone{
+            margin-top: -10px !important;
+        }
     </style>
 
     <div id="content">
         <span id="arrows-down">
+            <h1 class="text-center">
+              You
+          </h1>
+          <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
           <h1 class="text-center">
-            Scroll
+            are
         </h1>
-
+        <h1 class="text-center">
+            scrolling
+        </h1>
+        
         <h4 class="text-center">
             <i class="fas fa-arrow-down"></i>
         </h4>
         <h1 class="text-center">
-            to
+            online
         </h1>
-        <h4 class="text-center">
-            <i class="fas fa-arrow-down"></i>
-        </h4>
         <h1 class="text-center">
-            the
-        </h1>
-        <h4 class="text-center">
-            <i class="fas fa-arrow-down"></i>
-        </h4>
-        <h1 class="text-center">
-            bottom.
+            shop
         </h1>
         <h4 class="text-center">
             <i class="fas fa-arrow-down"></i>
         </h4>
         <h1 class="text-center">
-            This
+            and
         </h1>
         <h4 class="text-center">
             <i class="fas fa-arrow-down"></i>
         </h4>
+        <h1 class="text-center">
+            this
+        </h1>
         <h1 class="text-center">
             is
         </h1>
+        <h4 class="text-center">
+            <i class="fas fa-arrow-down"></i>
+        </h4>
         </span>
         <div class="row justify-content-center" style="width: 101%;">
             <button id="qr" class="card" onclick="pay()">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="328" width="328" class="pyqrcode"><path transform="scale(8)" stroke="#000" class="pyqrline" d="M4 4.5h7m4 0h1m2 0h1m2 0h2m3 0h1m1 0h1m1 0h7m-33 1h1m5 0h1m2 0h1m2 0h1m1 0h5m1 0h3m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m2 0h5m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m2 0h1m1 0h4m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h1m2 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m3 0h2m1 0h1m1 0h1m4 0h1m-21 1h2m1 0h2m1 0h2m3 0h2m2 0h1m4 0h2m4 0h2m-31 1h1m1 0h2m3 0h1m1 0h3m2 0h4m1 0h1m1 0h3m1 0h1m1 0h5m-30 1h2m1 0h3m1 0h2m1 0h1m1 0h2m4 0h1m1 0h2m3 0h1m1 0h4m-32 1h2m1 0h2m6 0h3m1 0h1m4 0h2m2 0h1m1 0h2m1 0h3m-33 1h4m1 0h3m2 0h1m1 0h1m1 0h1m6 0h1m2 0h1m1 0h2m1 0h1m-27 1h1m3 0h4m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h5m2 0h1m5 0h6m-31 1h1m2 0h1m1 0h1m3 0h1m3 0h1m2 0h1m1 0h3m2 0h1m2 0h3m1 0h1m1 0h1m-32 1h1m3 0h2m4 0h1m5 0h1m1 0h1m5 0h5m2 0h1m-33 1h2m5 0h1m5 0h1m2 0h1m4 0h2m1 0h1m1 0h4m1 0h2m-31 1h1m3 0h3m1 0h5m2 0h5m1 0h1m2 0h1m2 0h2m1 0h1m-32 1h1m2 0h1m2 0h1m1 0h2m1 0h2m1 0h1m4 0h1m2 0h2m1 0h1m2 0h2m-31 1h1m3 0h3m3 0h1m3 0h1m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h1m-30 1h1m2 0h1m1 0h1m2 0h1m1 0h1m3 0h2m3 0h5m3 0h2m1 0h2m-32 1h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2m2 0h2m1 0h4m-33 1h1m2 0h2m2 0h2m2 0h1m2 0h1m2 0h1m1 0h2m2 0h1m3 0h2m1 0h1m1 0h1m-33 1h5m1 0h1m1 0h2m4 0h3m2 0h1m4 0h5m-21 1h2m1 0h1m1 0h2m3 0h3m3 0h1m3 0h4m-32 1h7m1 0h1m1 0h1m1 0h1m6 0h1m1 0h4m1 0h1m1 0h3m-31 1h1m5 0h1m4 0h2m2 0h1m1 0h1m5 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h2m1 0h1m4 0h1m4 0h1m1 0h7m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h5m3 0h1m3 0h1m2 0h1m1 0h1m1 0h1m4 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m6 0h2m2 0h2m6 0h1m2 0h2m-33 1h1m5 0h1m2 0h1m1 0h7m1 0h2m1 0h1m2 0h2m2 0h4m-33 1h7m2 0h1m7 0h1m3 0h4m1 0h1m1 0h1"/></svg>
-                    </button>
+                <img src="/web/img/demo.png" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" height="328" width="328" class="pyqrcode"><path transform="scale(8)" stroke="#000" class="pyqrline" d="M4 4.5h7m4 0h1m2 0h1m2 0h2m3 0h1m1 0h1m1 0h7m-33 1h1m5 0h1m2 0h1m2 0h1m1 0h5m1 0h3m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m2 0h5m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m2 0h1m1 0h4m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h1m2 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m3 0h2m1 0h1m1 0h1m4 0h1m-21 1h2m1 0h2m1 0h2m3 0h2m2 0h1m4 0h2m4 0h2m-31 1h1m1 0h2m3 0h1m1 0h3m2 0h4m1 0h1m1 0h3m1 0h1m1 0h5m-30 1h2m1 0h3m1 0h2m1 0h1m1 0h2m4 0h1m1 0h2m3 0h1m1 0h4m-32 1h2m1 0h2m6 0h3m1 0h1m4 0h2m2 0h1m1 0h2m1 0h3m-33 1h4m1 0h3m2 0h1m1 0h1m1 0h1m6 0h1m2 0h1m1 0h2m1 0h1m-27 1h1m3 0h4m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h5m2 0h1m5 0h6m-31 1h1m2 0h1m1 0h1m3 0h1m3 0h1m2 0h1m1 0h3m2 0h1m2 0h3m1 0h1m1 0h1m-32 1h1m3 0h2m4 0h1m5 0h1m1 0h1m5 0h5m2 0h1m-33 1h2m5 0h1m5 0h1m2 0h1m4 0h2m1 0h1m1 0h4m1 0h2m-31 1h1m3 0h3m1 0h5m2 0h5m1 0h1m2 0h1m2 0h2m1 0h1m-32 1h1m2 0h1m2 0h1m1 0h2m1 0h2m1 0h1m4 0h1m2 0h2m1 0h1m2 0h2m-31 1h1m3 0h3m3 0h1m3 0h1m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h1m-30 1h1m2 0h1m1 0h1m2 0h1m1 0h1m3 0h2m3 0h5m3 0h2m1 0h2m-32 1h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2m2 0h2m1 0h4m-33 1h1m2 0h2m2 0h2m2 0h1m2 0h1m2 0h1m1 0h2m2 0h1m3 0h2m1 0h1m1 0h1m-33 1h5m1 0h1m1 0h2m4 0h3m2 0h1m4 0h5m-21 1h2m1 0h1m1 0h2m3 0h3m3 0h1m3 0h4m-32 1h7m1 0h1m1 0h1m1 0h1m6 0h1m1 0h4m1 0h1m1 0h3m-31 1h1m5 0h1m4 0h2m2 0h1m1 0h1m5 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h2m1 0h1m4 0h1m4 0h1m1 0h7m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h5m3 0h1m3 0h1m2 0h1m1 0h1m1 0h1m4 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m6 0h2m2 0h2m6 0h1m2 0h2m-33 1h1m5 0h1m2 0h1m1 0h7m1 0h2m1 0h1m2 0h2m2 0h4m-33 1h7m2 0h1m7 0h1m3 0h4m1 0h1m1 0h1"/></svg>
+            </button>
         </div>
         <h4 class="text-center">
             <i class="fas fa-arrow-up"></i>
@@ -204,17 +217,12 @@
                 <div class="row">
                     <div class="col-7 no-padding mt-2">
                         <span class="text-white">
-                                <b class="h5" id="phone">
+                                <b class="h5" id="product-phone">
+                                    <img src="web/img/product.png" class="rounded product-call" height="44px" width="44px" alt="">
+                                    Pot
                                 </b>
                                 </span>
                         <br>
-                        <script>
-                            var number = Math.random().toString().slice(2, 5);
-                            var number_2 = Math.random().toString().slice(2, 5);
-                            var number_3 = Math.random().toString().slice(2, 5);
-                            var phone = "+48" + "&thinsp;" + number + "&thinsp;" + number_2 + "&thinsp;" + number_3;
-                            document.getElementById("phone").innerHTML = phone;
-                        </script>
                         <span class="text-muted ml-2 text-under">
                             <small>
                                 opticool.technology
