@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <title>Call4Action</title>
+    <title>Demo</title>
 
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -44,7 +44,7 @@
                     $('.collapse').collapse();
                     music.play();
                     already_tapped = true;
-                    window.navigator.vibrate(400); // vibrate for 200ms
+                    window.navigator.vibrate(1400); // vibrate for 200ms
                     window.navigator.vibrate([100, 30, 100, 30, 100, 30, 100, 30, 200, 30, 100, 30, 100, 30, 100, 30, 100, 30, 200, 30, 100, 30, 100, 30, 100, 30, 100, 30, 200, 30, 100, 30, 100, 30, 100, 30, 100, 30, 200, 30]); // 4444
                 }
             }, 2400);
@@ -152,16 +152,16 @@
         .product-call {
             margin-top: -17px !important;
         }
-
+        
         .product-phone {
             margin-top: -10px !important;
         }
-
-        #img_qr{
-            width: 90%  !important;
+        
+        #img_qr {
+            width: 90% !important;
         }
-
-        #svg_qr{
+        
+        #svg_qr {
             display: none;
         }
     </style>
@@ -225,32 +225,38 @@
 
     <div id="message">
         <div class="collapse rounded notification" id="collapseExample">
-            <div class="row ml-1 mt-1 mr-1 card card-body rounded bg call resize">
-                <div class="row">
-                    <div class="col-7 no-padding mt-2">
-                        <span class="text-white">
-                                <b class="h5" id="product-phone">
-                                    <img src="web/img/product.png" class="rounded product-call" height="44px" width="44px" alt="">
-                                    Pot
-                                </b>
-                                </span>
+            <div class="row ml-1 mt-1 mr-1 card border-white card-body call resize">
+                <div class="row ">
+                    <div class="col-10 no-padding bg-dark rounded">
+                        <span class="float-left">
+                            <span class="text-white">
+                                    <b class="h5" id="product-phone">
+                                        <img src="web/img/product.png" class="rounded product-call" height="44px" width="44px" alt="">
+                                        Pot
+                                    </b>
+                                    </span>
                         <br>
                         <span class="text-muted ml-2 text-under">
-                            <small>
-                                opticool.technology
-                            </small>
+                                <small>
+                                    opticool.technology
+                                </small>
+                            </span>
                         </span>
 
-                    </div>
-                    <div class="col-5 no-padding"><span class="float-right">
+                        <span class="float-right">
                             <button class="action-btn bg-danger text-white text-center rounded mr-2" onclick="stop_audio()">
                                 <i class="fa fa-times icon-size mr-1" aria-hidden="true"></i>
-<!--                                 <i class="fa fa-phone rotate-bottom text-center icon-size mr-1" aria-hidden="true"></i> -->
+                                <!-- <i class="fa fa-phone rotate-bottom text-center icon-size mr-1" aria-hidden="true"></i> -->
                             </button>
+                        </span>
+                    </div>
+                    <div class="col-2 no-padding">
+                        <span class="float-right">
                         <button class="action-btn bg-success text-white text-center rounded mr-2" onclick="take_call()">
-                                <i class="fa fa-phone fa-flip-horizontal text-center icon-size mr-1" aria-hidden="true"></i>
-                            </button>
-                        </span></div>
+                                    <i class="fa fa-phone fa-flip-horizontal text-center icon-size mr-1" aria-hidden="true"></i>
+                                </button>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
