@@ -18,7 +18,7 @@
 <body>
 
     <script>
-        var music = new Audio("https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3")
+        var music = new Audio("call.mp3");
         var nothing = new Audio("http://touchbasicapp.com/nothing.wav");
         var message = new Audio("./speach.mp3");
         var allAudio = [];
@@ -50,8 +50,7 @@
             }, 2400);
         }
 
-        document.body.addEventListener('touchstart', tapped, false)
-        document.body.addEventListener('click', tapped, false)
+        document.body.addEventListener('touchstart', tapped, false) document.body.addEventListener('click', tapped, false)
 
         function stop_audio() {
             music.pause();
